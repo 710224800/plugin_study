@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_view.setLayoutManager(linearLayoutManager);
 
+
+
+        //这是一个功能节点示例--start--
         ItemData itemData = new ItemData();
         itemData.name = "hookActivityManager";
         itemData.action = new View.OnClickListener() {
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         datas.add(itemData);
+        //功能节点示例--end--
 
         MyAdapter myAdapter = new MyAdapter();
         recycler_view.setAdapter(myAdapter);
