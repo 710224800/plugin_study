@@ -14,13 +14,14 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
+import lyhao.plugin.study.feature_list.InstrumentationHookActivity;
 import lyhao.plugin.study.hooktest.HookHelper;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recycler_view;
     List<ItemData> datas = new ArrayList<>();
-
+    ItemData itemData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +30,13 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_view.setLayoutManager(linearLayoutManager);
 
-
+        itemData = new ItemData();
+        itemData.name = "hookInstrumentation";
+        itemData.actionClass = InstrumentationHookActivity.class;
+        datas.add(itemData);
 
         //这是一个功能节点示例--start--
-        ItemData itemData = new ItemData();
+        itemData = new ItemData();
         itemData.name = "hookActivityManager";
         itemData.action = new View.OnClickListener() {
             @Override
