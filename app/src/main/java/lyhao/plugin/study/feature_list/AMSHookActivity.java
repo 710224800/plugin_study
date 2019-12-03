@@ -1,5 +1,6 @@
 package lyhao.plugin.study.feature_list;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,9 +17,14 @@ import lyhao.plugin.study.util.RefInvoke;
 public class AMSHookActivity extends BaseActivity {
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+        hookAMN();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        hookAMN();
         jumpToTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
