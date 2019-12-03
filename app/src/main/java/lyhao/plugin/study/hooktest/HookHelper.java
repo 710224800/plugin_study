@@ -33,8 +33,7 @@ public class HookHelper {
                     new Class<?> []{iActivityManagerinterface},
                     new HookHandler(rawIActivityManager)) ;
 
-            RefInvoke.setFieldOjbect("android.util.Singleton",
-                    "mInstance", gDefault, proxy);
+            RefInvoke.setFieldOjbect("android.util.Singleton", gDefault,"mInstance", proxy);
             Log.d(TAG, "1111111111111111111111111111111111111111111111");
         } catch (Exception e){
             Log.d(TAG, e.toString());

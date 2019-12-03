@@ -143,8 +143,7 @@ public class RefInvoke {
      * @param filedVaule
      *            字段值
      */
-    public static void setFieldOjbect(String classname, String filedName,
-                                      Object obj, Object filedVaule) {
+    public static void setFieldOjbect(String classname, Object obj, String filedName, Object filedVaule) {
         try {
             Class obj_class = Class.forName(classname);
             Field field = obj_class.getDeclaredField(filedName);

@@ -14,6 +14,7 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
+import lyhao.plugin.study.feature_list.AMSHookActivity;
 import lyhao.plugin.study.feature_list.InstrumentationHookActivity;
 import lyhao.plugin.study.hooktest.HookHelper;
 
@@ -29,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         recycler_view = findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_view.setLayoutManager(linearLayoutManager);
+
+        itemData = new ItemData();
+        itemData.name = "AMSHookActivity";
+        itemData.actionClass = AMSHookActivity.class;
+        datas.add(itemData);
 
         itemData = new ItemData();
         itemData.name = "hookInstrumentation";
@@ -73,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(MainActivity.this, datas.get(i).actionClass);
+                        intent.putExtra("name", datas.get(i).name);
                         startActivity(intent);
                     }
                 });
