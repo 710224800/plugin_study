@@ -154,8 +154,7 @@ public class RefInvoke {
         }
     }
 
-    public static void setFieldOjbect(Class obj_class, String filedName,
-                                      Object obj, Object filedVaule) {
+    public static void setFieldOjbect(Class obj_class, Object obj, String filedName, Object filedVaule) {
         try {
             Field field = obj_class.getDeclaredField(filedName);
             field.setAccessible(true);

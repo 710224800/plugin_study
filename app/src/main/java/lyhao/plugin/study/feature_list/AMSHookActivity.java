@@ -1,17 +1,14 @@
 package lyhao.plugin.study.feature_list;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 import lyhao.plugin.study.BaseActivity;
-import lyhao.plugin.study.TestActivity;
 import lyhao.plugin.study.util.RefInvoke;
 
 public class AMSHookActivity extends BaseActivity {
@@ -25,12 +22,6 @@ public class AMSHookActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        jumpToTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AMSHookActivity.this, TestActivity.class));
-            }
-        });
     }
 
     private void hookAMN(){
