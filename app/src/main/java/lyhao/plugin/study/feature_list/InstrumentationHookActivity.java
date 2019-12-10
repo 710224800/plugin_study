@@ -42,7 +42,7 @@ public class InstrumentationHookActivity extends BaseActivity {
             Log.e(TAG, "Instrumentation Hooked");
             Class[] p1 = {Context.class, IBinder.class, IBinder.class, Activity.class, Intent.class, int.class, Bundle.class};
             Object[] v1 = {who, contextThread, token, target, intent, requestCode, options};
-            return (ActivityResult) RefInvoke.invokeMethod(Instrumentation.class, "execStartActivity", mBase, p1, v1);
+            return (ActivityResult) RefInvoke.invokeMethod(Instrumentation.class, mBase, "execStartActivity", p1, v1);
         }
     }
 }

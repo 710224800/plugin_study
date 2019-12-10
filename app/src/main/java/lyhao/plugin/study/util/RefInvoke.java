@@ -61,8 +61,7 @@ public class RefInvoke {
 
     }
 
-    public static Object invokeMethod(Class obj_class, String method_name,
-                                      Object obj, Class[] pareType, Object[] pareVaules) {
+    public static Object invokeMethod(Class obj_class, Object obj, String method_name, Class[] pareType, Object[] pareVaules) {
         try {
             Method method = obj_class.getMethod(method_name, pareType);
             return method.invoke(obj, pareVaules);

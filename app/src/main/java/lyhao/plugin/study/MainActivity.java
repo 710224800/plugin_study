@@ -17,6 +17,7 @@ import java.util.List;
 import lyhao.plugin.study.feature_list.AMSHookActivity;
 import lyhao.plugin.study.feature_list.Hook_mHActivity;
 import lyhao.plugin.study.feature_list.InstrumentationHookActivity;
+import lyhao.plugin.study.feature_list.InstrumentationHookActivity2;
 import lyhao.plugin.study.hooktest.HookHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
         recycler_view = findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_view.setLayoutManager(linearLayoutManager);
+
+        itemData = new ItemData();
+        itemData.name = "hookInstrumentation2";
+        itemData.actionClass = InstrumentationHookActivity2.class;
+        datas.add(itemData);
 
         itemData = new ItemData();
         itemData.name = "Hook_mHActivity";
