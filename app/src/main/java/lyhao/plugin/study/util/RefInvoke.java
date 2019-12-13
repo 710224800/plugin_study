@@ -130,6 +130,19 @@ public class RefInvoke {
 
     }
 
+    public static Object getStaticFieldOjbect(Class clazz, Object obj,
+                                              String filedName) {
+        try {
+            Field field = clazz.getDeclaredField(filedName);
+            field.setAccessible(true);
+            return field.get(obj);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
     /**
      * 将某个类中的filedName字段设置为 filedVaule值
      *

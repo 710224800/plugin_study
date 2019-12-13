@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lyhao.plugin.study.feature_list.AMSHookActivity;
+import lyhao.plugin.study.feature_list.AMSHookActivity2;
 import lyhao.plugin.study.feature_list.Hook_mHActivity;
 import lyhao.plugin.study.feature_list.InstrumentationHookActivity;
 import lyhao.plugin.study.feature_list.InstrumentationHookActivity2;
@@ -32,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
         recycler_view = findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_view.setLayoutManager(linearLayoutManager);
+
+        itemData = new ItemData();
+        itemData.name = "AMSHookActivity2";
+        itemData.actionClass = AMSHookActivity2.class;
+        datas.add(itemData);
 
         itemData = new ItemData();
         itemData.name = "hookInstrumentation2";

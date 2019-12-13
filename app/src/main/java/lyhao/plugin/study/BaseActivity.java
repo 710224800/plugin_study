@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -23,8 +24,12 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_common);
         title = findViewById(R.id.title);
         jumpToTest = findViewById(R.id.jumpToTest);
-        String name = getIntent().getExtras().getString("name", "null");
-        title.setText(name);
+        try {
+            String name = getIntent().getExtras().getString("name", "null");
+            title.setText(name);
+        } catch (Exception e){
+            Log.e(TAG, e.toString());
+        }
 
         jumpToTest.setOnClickListener(new View.OnClickListener() {
             @Override
