@@ -39,37 +39,43 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_view.setLayoutManager(linearLayoutManager);
 
+        //6.1 加载外部的dex （加载 app-debug.apk 中 dex里的类）
         itemData = new ItemData();
         itemData.name = "HostApp";
         itemData.actionClass = HostApp.class;
         datas.add(itemData);
 
+        //5.4 启动没有在AndroidManifest中声明的Activity
         itemData = new ItemData();
         itemData.name = "AMSHookActivity2";
         itemData.actionClass = AMSHookActivity2.class;
         datas.add(itemData);
 
+        //5.2.5 再次对 Instrumentation 字段进行 Hook
         itemData = new ItemData();
         itemData.name = "hookInstrumentation2";
         itemData.actionClass = InstrumentationHookActivity2.class;
         datas.add(itemData);
 
+        //5.2.4 对H类的mCallback字段进行Hook
         itemData = new ItemData();
         itemData.name = "Hook_mHActivity";
         itemData.actionClass = Hook_mHActivity.class;
         datas.add(itemData);
 
+        //5.2.3 对AMN的getDefault方法进行Hook
         itemData = new ItemData();
         itemData.name = "AMSHookActivity";
         itemData.actionClass = AMSHookActivity.class;
         datas.add(itemData);
 
+        //5.2.2 对Activity 的 mInstrumentation 字段进行Hook
         itemData = new ItemData();
         itemData.name = "hookInstrumentation";
         itemData.actionClass = InstrumentationHookActivity.class;
         datas.add(itemData);
 
-        //这是一个功能节点示例--start--
+        //4.3 对AMN的Hook
         itemData = new ItemData();
         itemData.name = "hookActivityManager";
         itemData.action = new View.OnClickListener() {
@@ -80,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         datas.add(itemData);
-        //功能节点示例--end--
 
         MyAdapter myAdapter = new MyAdapter();
         recycler_view.setAdapter(myAdapter);
