@@ -1,11 +1,15 @@
 package lyhao.plugin.study;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +21,7 @@ import java.util.List;
 import lyhao.plugin.study.feature_list.AMSHookActivity;
 import lyhao.plugin.study.feature_list.AMSHookActivity2;
 import lyhao.plugin.study.feature_list.Hook_mHActivity;
+import lyhao.plugin.study.feature_list.HostApp;
 import lyhao.plugin.study.feature_list.InstrumentationHookActivity;
 import lyhao.plugin.study.feature_list.InstrumentationHookActivity2;
 import lyhao.plugin.study.hooktest.HookHelper;
@@ -33,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         recycler_view = findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_view.setLayoutManager(linearLayoutManager);
+
+        itemData = new ItemData();
+        itemData.name = "HostApp";
+        itemData.actionClass = HostApp.class;
+        datas.add(itemData);
 
         itemData = new ItemData();
         itemData.name = "AMSHookActivity2";
@@ -74,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         MyAdapter myAdapter = new MyAdapter();
         recycler_view.setAdapter(myAdapter);
+        requestPermission();
     }
 
     class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
@@ -122,5 +133,18 @@ public class MainActivity extends AppCompatActivity {
         String name;
         Class actionClass;
         View.OnClickListener action;
+    }
+
+
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+    public void requestPermission() {
+        if(Build.VERSION.SDK_INT >Build.VERSION_CODES.LOLLIPOP){
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, 10001);
+            }
+        }
     }
 }

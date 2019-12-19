@@ -1,7 +1,7 @@
 package lyhao.plugin.study;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * Created by luyanhao on 2019/12/13.

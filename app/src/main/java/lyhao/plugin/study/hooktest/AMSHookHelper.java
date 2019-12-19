@@ -85,6 +85,9 @@ public class AMSHookHelper {
 
                 newIntent.setComponent(componentName);
                 //把原始要启动的Activity先存越来
+                if(raw.getExtras() != null) {
+                    newIntent.putExtras(raw.getExtras());//这里要把extras设置进去
+                }
                 newIntent.putExtra(AMSHookHelper.EXTRA_TARGET_INTENT, raw);
 
                 args[index] = newIntent;//替换

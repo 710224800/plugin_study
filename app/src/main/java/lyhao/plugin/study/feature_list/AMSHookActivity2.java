@@ -3,12 +3,11 @@ package lyhao.plugin.study.feature_list;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 
 import lyhao.plugin.study.BaseActivity;
 import lyhao.plugin.study.NoRegisterActivity;
-import lyhao.plugin.study.TestActivity;
 import lyhao.plugin.study.hooktest.AMSHookHelper;
 
 /**
