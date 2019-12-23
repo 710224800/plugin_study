@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_view.setLayoutManager(linearLayoutManager);
 
-        //6.1 加载外部的dex （加载 app-debug.apk 中 dex里的类）
+        //6.1 加载外部的dex （加载 plugin1-debug.apk 中 dex里的类）
         itemData = new ItemData();
         itemData.name = "HostApp";
         itemData.actionClass = HostApp.class;
