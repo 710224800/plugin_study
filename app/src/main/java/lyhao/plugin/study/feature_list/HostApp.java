@@ -41,12 +41,12 @@ public class HostApp extends AppCompatActivity {
             Class mLoadClassBean = classLoader.loadClass("lyhao.plugin.plugin1.Bean");
             Object beanObject = mLoadClassBean.newInstance();
 
-            //面向接口之前需要这样做：
+            // 面向接口之前需要这样做：
 //            Method getNameMethod = mLoadClassBean.getMethod("getName");
 //            getNameMethod.setAccessible(true);
 //            String name = (String) getNameMethod.invoke(beanObject);
 
-            //面向接口编程后就可以这样了：
+            //6.2 面向接口编程后就可以这样了：
             IBean bean = (IBean) beanObject;
             String name = bean.getName();
             title.setText(name);
