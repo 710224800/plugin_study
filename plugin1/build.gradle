@@ -23,6 +23,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all {  // 这里是打包后，自动重命名后拷贝到 主app工程assets目录下的逻辑
+            println(variant.name)
             outputFileName = "plugin1-debug.apk"
             println("$buildDir/outputs/apk/debug/")
             println("$rootDir/app/src/main/assets")
