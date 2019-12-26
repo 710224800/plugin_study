@@ -18,13 +18,9 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
-import lyhao.plugin.study.feature_list.AMSHookActivity;
 import lyhao.plugin.study.feature_list.AMSHookActivity2;
-import lyhao.plugin.study.feature_list.Hook_mHActivity;
 import lyhao.plugin.study.feature_list.HostApp;
-import lyhao.plugin.study.feature_list.InstrumentationHookActivity;
-import lyhao.plugin.study.feature_list.InstrumentationHookActivity2;
-import lyhao.plugin.study.hooktest.HookHelper;
+import lyhao.plugin.study.feature_list.ResourcePluginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,53 +35,59 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_view.setLayoutManager(linearLayoutManager);
 
+        //7.2 资源的插件化解决方案
+        itemData = new ItemData();
+        itemData.name = "资源的插件化解决方案";
+        itemData.actionClass = ResourcePluginActivity.class;
+        datas.add(itemData);
+
         //6.1 加载外部的dex （加载 plugin1-debug.apk 中 dex里的类）
         itemData = new ItemData();
-        itemData.name = "HostApp";
+        itemData.name = "加载外部的dex 并获取属性";
         itemData.actionClass = HostApp.class;
         datas.add(itemData);
 
         //5.4 启动没有在AndroidManifest中声明的Activity
         itemData = new ItemData();
-        itemData.name = "AMSHookActivity2";
+        itemData.name = "启动没有在AndroidManifest中声明的Activity";
         itemData.actionClass = AMSHookActivity2.class;
         datas.add(itemData);
 
-        //5.2.5 再次对 Instrumentation 字段进行 Hook
-        itemData = new ItemData();
-        itemData.name = "hookInstrumentation2";
-        itemData.actionClass = InstrumentationHookActivity2.class;
-        datas.add(itemData);
-
-        //5.2.4 对H类的mCallback字段进行Hook
-        itemData = new ItemData();
-        itemData.name = "Hook_mHActivity";
-        itemData.actionClass = Hook_mHActivity.class;
-        datas.add(itemData);
-
-        //5.2.3 对AMN的getDefault方法进行Hook
-        itemData = new ItemData();
-        itemData.name = "AMSHookActivity";
-        itemData.actionClass = AMSHookActivity.class;
-        datas.add(itemData);
-
-        //5.2.2 对Activity 的 mInstrumentation 字段进行Hook
-        itemData = new ItemData();
-        itemData.name = "hookInstrumentation";
-        itemData.actionClass = InstrumentationHookActivity.class;
-        datas.add(itemData);
-
-        //4.3 对AMN的Hook
-        itemData = new ItemData();
-        itemData.name = "hookActivityManager";
-        itemData.action = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HookHelper.hookActivityManager();
-                startActivity(new Intent(MainActivity.this, TestActivity.class));
-            }
-        };
-        datas.add(itemData);
+//        //5.2.5 再次对 Instrumentation 字段进行 Hook
+//        itemData = new ItemData();
+//        itemData.name = "再次对 Instrumentation 字段进行 Hook";
+//        itemData.actionClass = InstrumentationHookActivity2.class;
+//        datas.add(itemData);
+//
+//        //5.2.4 对H类的mCallback字段进行Hook
+//        itemData = new ItemData();
+//        itemData.name = "对H类的mCallback字段进行Hook";
+//        itemData.actionClass = Hook_mHActivity.class;
+//        datas.add(itemData);
+//
+//        //5.2.3 对AMN的getDefault方法进行Hook
+//        itemData = new ItemData();
+//        itemData.name = "对AMN的getDefault方法进行Hook";
+//        itemData.actionClass = AMSHookActivity.class;
+//        datas.add(itemData);
+//
+//        //5.2.2 对Activity 的 mInstrumentation 字段进行Hook
+//        itemData = new ItemData();
+//        itemData.name = "对Activity 的 mInstrumentation 字段进行Hook";
+//        itemData.actionClass = InstrumentationHookActivity.class;
+//        datas.add(itemData);
+//
+//        //4.3 对AMN的Hook
+//        itemData = new ItemData();
+//        itemData.name = "对AMN的Hook";
+//        itemData.action = new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                HookHelper.hookActivityManager();
+//                startActivity(new Intent(MainActivity.this, TestActivity.class));
+//            }
+//        };
+//        datas.add(itemData);
 
         MyAdapter myAdapter = new MyAdapter();
         recycler_view.setAdapter(myAdapter);

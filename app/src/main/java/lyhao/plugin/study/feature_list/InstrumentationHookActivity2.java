@@ -35,12 +35,6 @@ public class InstrumentationHookActivity2 extends BaseActivity {
                 (Instrumentation) RefInvoke.getFieldOjbect(Activity.class, this, "mInstrumentation");
         Instrumentation evilInstrumentation = new EvilInstrumentation(mInstrumentation);
         RefInvoke.setFieldOjbect(Activity.class, this, "mInstrumentation", evilInstrumentation);
-        jumpToTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(InstrumentationHookActivity2.this, TestActivity.class));
-            }
-        });
     }
 
     class EvilInstrumentation extends Instrumentation {

@@ -26,7 +26,7 @@ public class AMSHookActivity2 extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        jumpToTest.setOnClickListener(new View.OnClickListener() {
+        setBtn1ClickListener("跳转未在manifest注册的activity", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AMSHookActivity2.this, NoRegisterActivity.class));

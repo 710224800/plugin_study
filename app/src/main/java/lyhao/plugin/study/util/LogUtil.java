@@ -7,10 +7,18 @@ import android.util.Log;
  */
 public class LogUtil {
     public static boolean debugable = true;
+
     public static final String globalTAG = "plugin_study";
+
     public static void d(String TAG, String content){
         if(debugable) {
             Log.d(globalTAG + TAG, content);
+        }
+    }
+
+    public static void e(String TAG, String content){
+        if(debugable) {
+            Log.e(globalTAG + TAG, content);
         }
     }
 }

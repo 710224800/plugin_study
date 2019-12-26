@@ -13,7 +13,7 @@ import java.io.InputStream;
 public class Utils {
     public static final String TAG = Utils.class.getSimpleName();
     private static final String SDCardPath = Environment.getExternalStorageDirectory().getAbsolutePath();
-    public static final String savePath = SDCardPath + "/data/data/files";//路径分隔符
+    public static final String savePath = SDCardPath + "/data/data/lyhao.plugin.study/files";//路径分隔符
 
     /**
      * @param myContext
