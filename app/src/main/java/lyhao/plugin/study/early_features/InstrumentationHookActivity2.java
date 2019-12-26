@@ -1,4 +1,4 @@
-package lyhao.plugin.study.feature_list;
+package lyhao.plugin.study.early_features;
 
 import android.app.Activity;
 import android.app.Instrumentation;
