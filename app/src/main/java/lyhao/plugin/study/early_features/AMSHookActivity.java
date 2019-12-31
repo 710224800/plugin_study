@@ -34,12 +34,12 @@ public class AMSHookActivity extends BaseActivity {
             gDefault = RefInvoke.getStaticFieldOjbect("android.app.ActivityManager", "IActivityManagerSingleton");
         }
 
-        Object mInstance = RefInvoke.getFieldOjbect("android.util.Singleton", gDefault, "mInstance");
+        Object mInstance = RefInvoke.getFieldObject("android.util.Singleton", gDefault, "mInstance");
         try {
             Class<?> classB2Interface = Class.forName("android.app.IActivityManager");
             Object proxy = Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
                     new Class<?>[]{classB2Interface}, new MockClass1(mInstance));
-            RefInvoke.setFieldOjbect("android.util.Singleton", gDefault, "mInstance", proxy);
+            RefInvoke.setFieldObject("android.util.Singleton", gDefault, "mInstance", proxy);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

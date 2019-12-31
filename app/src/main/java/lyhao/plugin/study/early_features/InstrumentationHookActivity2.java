@@ -5,13 +5,9 @@ import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.PersistableBundle;
 import android.util.Log;
-import android.view.View;
 
 import lyhao.plugin.study.BaseActivity;
-import lyhao.plugin.study.TestActivity;
 import lyhao.plugin.study.util.RefInvoke;
 
 public class InstrumentationHookActivity2 extends BaseActivity {
@@ -21,10 +17,10 @@ public class InstrumentationHookActivity2 extends BaseActivity {
         super.attachBaseContext(newBase);
         Object currentActivityThread = RefInvoke.getStaticFieldOjbect(
                 "android.app.ActivityThread", "sCurrentActivityThread");
-        Instrumentation mInstrumentation = (Instrumentation) RefInvoke.getFieldOjbect(
+        Instrumentation mInstrumentation = (Instrumentation) RefInvoke.getFieldObject(
                         "android.app.ActivityThread", currentActivityThread, "mInstrumentation");
         Instrumentation evilInstrumentation = new EvilInstrumentation(mInstrumentation);
-        RefInvoke.setFieldOjbect(
+        RefInvoke.setFieldObject(
                 "android.app.ActivityThread", currentActivityThread, "mInstrumentation", evilInstrumentation);
     }
 
@@ -32,9 +28,9 @@ public class InstrumentationHookActivity2 extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Instrumentation mInstrumentation =
-                (Instrumentation) RefInvoke.getFieldOjbect(Activity.class, this, "mInstrumentation");
+                (Instrumentation) RefInvoke.getFieldObject(Activity.class, this, "mInstrumentation");
         Instrumentation evilInstrumentation = new EvilInstrumentation(mInstrumentation);
-        RefInvoke.setFieldOjbect(Activity.class, this, "mInstrumentation", evilInstrumentation);
+        RefInvoke.setFieldObject(Activity.class, this, "mInstrumentation", evilInstrumentation);
     }
 
     class EvilInstrumentation extends Instrumentation {

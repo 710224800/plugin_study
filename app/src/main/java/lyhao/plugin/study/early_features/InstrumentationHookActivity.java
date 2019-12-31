@@ -19,9 +19,9 @@ public class InstrumentationHookActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Instrumentation mInstrumentation =
-                (Instrumentation) RefInvoke.getFieldOjbect(Activity.class, this, "mInstrumentation");
+                (Instrumentation) RefInvoke.getFieldObject(Activity.class, this, "mInstrumentation");
         Instrumentation evilInstrumentation = new EvilInstrumentation(mInstrumentation);
-        RefInvoke.setFieldOjbect(Activity.class, this, "mInstrumentation", evilInstrumentation);
+        RefInvoke.setFieldObject(Activity.class, this, "mInstrumentation", evilInstrumentation);
         jumpToTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

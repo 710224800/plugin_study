@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lyhao.plugin.study.feature_list.AMSHookActivity2;
+import lyhao.plugin.study.feature_list.DynamicLoadePluginActivity;
 import lyhao.plugin.study.feature_list.HostApp;
 import lyhao.plugin.study.feature_list.ResourcePluginActivity;
 
@@ -34,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
         recycler_view = findViewById(R.id.recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_view.setLayoutManager(linearLayoutManager);
+
+        //9.2 基于动态替换的Activity插件化方案
+        itemData = new ItemData();
+        itemData.name = "基于动态替换的Activity插件化方案";
+        itemData.actionClass = DynamicLoadePluginActivity.class;
+        datas.add(itemData);
 
         //7.2 资源的插件化解决方案
         itemData = new ItemData();

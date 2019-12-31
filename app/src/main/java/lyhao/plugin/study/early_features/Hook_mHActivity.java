@@ -21,10 +21,10 @@ public class Hook_mHActivity extends BaseActivity {
         Object currentActivityThread = RefInvoke.getStaticFieldOjbect("android.app.ActivityThread",
                 "sCurrentActivityThread");
         // 由于ActivityThread 一个进程只有一个， 我们获取这个对象的mH
-        Handler mH = (Handler) RefInvoke.getFieldOjbect("android.app.ActivityThread",
+        Handler mH = (Handler) RefInvoke.getFieldObject("android.app.ActivityThread",
                 currentActivityThread, "mH");
         // 把Handler 的mCallback 字段， 替换为new MockClass2(mH)
-        RefInvoke.setFieldOjbect(Handler.class, mH, "mCallback", new MockClass2(mH));
+        RefInvoke.setFieldObject(Handler.class, mH, "mCallback", new MockClass2(mH));
     }
 
     @Override

@@ -10,7 +10,6 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-import lyhao.plugin.study.NoRegisterActivity;
 import lyhao.plugin.study.TestActivity;
 import lyhao.plugin.study.util.RefInvoke;
 
@@ -37,14 +36,14 @@ public class AMSHookHelper {
         }
 
         // gDefault是一个android.util.Singleton<T>对象; 我们取出这个单例里面的 mInstance 字段
-        Object mInstance = RefInvoke.getFieldOjbect("android.util.Singleton", gDefault, "mInstance");
+        Object mInstance = RefInvoke.getFieldObject("android.util.Singleton", gDefault, "mInstance");
 
         try {
             // 创建一个mInstance 的代理对象MockClassl，然后替换这个字段，让我们的代理对象帮忙千活
             Class<?> classB2Interface = Class.forName("android.app.IActivityManager");
             Object proxy = Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
                     new Class<?>[]{classB2Interface}, new MockClass1(mInstance));
-            RefInvoke.setFieldOjbect("android.util.Singleton", gDefault, "mInstance", proxy);
+            RefInvoke.setFieldObject("android.util.Singleton", gDefault, "mInstance", proxy);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -103,10 +102,10 @@ public class AMSHookHelper {
     public void hookInstrumentation(){
         Object currentActivityThread = RefInvoke.getStaticFieldOjbect(
                 "android.app.ActivityThread", "sCurrentActivityThread");
-        Instrumentation mInstrumentation = (Instrumentation) RefInvoke.getFieldOjbect(
+        Instrumentation mInstrumentation = (Instrumentation) RefInvoke.getFieldObject(
                 "android.app.ActivityThread", currentActivityThread, "mInstrumentation");
         Instrumentation evilInstrumentation = new EvilInstrumentation(mInstrumentation);
-        RefInvoke.setFieldOjbect(
+        RefInvoke.setFieldObject(
                 "android.app.ActivityThread", currentActivityThread, "mInstrumentation", evilInstrumentation);
     }
 

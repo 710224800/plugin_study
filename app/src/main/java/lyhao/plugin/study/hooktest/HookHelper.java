@@ -25,7 +25,7 @@ public class HookHelper {
                 //获取ActivityManager的单例IActivityManagerSingleton，他其实就是之前的gDefault
                 gDefault = RefInvoke.getStaticFieldOjbect("android.app.ActivityManager", "IActivityManagerSingleton");
             }
-            Object rawIActivityManager = RefInvoke.getFieldOjbect(
+            Object rawIActivityManager = RefInvoke.getFieldObject(
                     "android.util.Singleton", gDefault, "mInstance");
             Class<?> iActivityManagerinterface = Class.forName("android.app.IActivityManager");
             Object proxy = Proxy.newProxyInstance(
@@ -33,7 +33,7 @@ public class HookHelper {
                     new Class<?> []{iActivityManagerinterface},
                     new HookHandler(rawIActivityManager)) ;
 
-            RefInvoke.setFieldOjbect("android.util.Singleton", gDefault,"mInstance", proxy);
+            RefInvoke.setFieldObject("android.util.Singleton", gDefault,"mInstance", proxy);
             Log.d(TAG, "1111111111111111111111111111111111111111111111");
         } catch (Exception e){
             Log.d(TAG, e.toString());
