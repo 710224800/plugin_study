@@ -16,7 +16,11 @@ public class DynamicLoadePluginActivity extends BaseActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
-        LoadedApkClassLoaderHookHelper.hookLoadedApkInActivityThread(null);
+        try {
+            LoadedApkClassLoaderHookHelper.hookLoadedApkInActivityThread(null);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
